@@ -46,7 +46,7 @@
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "git+https://github.com/level7in/level7in.github.io"
   },
   "scripts": {
     "build": "gatsby build",
@@ -55,6 +55,7 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "deploy": "gatsby build && gh-pages -d public -b master"
   }
 }
