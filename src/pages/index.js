@@ -5,13 +5,13 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
-
+import style from '../theme/normal.less'
 class BlogIndex extends React.Component {
   render() {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
     const posts = data.allMarkdownRemark.edges
-
+    console.log('style', style)
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="首页" />
@@ -29,6 +29,7 @@ class BlogIndex extends React.Component {
                 }}
               >
                 <h3
+                  className={style.articleTitle}
                   style={{
                     flex: 1,
                     marginBottom: rhythm(1 / 4),
