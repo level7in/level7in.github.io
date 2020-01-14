@@ -2,57 +2,35 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 
 import Bio from "../components/bio"
-import Layout from "../components/layout"
+import Layout from "../components/layout/layout"
 import SEO from "../components/seo"
-import { rhythm } from "../utils/typography"
-import style from '../theme/normal.less'
+import style from "../theme/normal.module.less"
 class BlogIndex extends React.Component {
   render() {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
     const posts = data.allMarkdownRemark.edges
-    console.log('style', style)
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="首页" />
         <Bio />
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug
+          const prevDate = node.frontmatter.date
+          const flag = node.frontmatter.date
           return (
             <article key={node.fields.slug}>
-              <header
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                }}
-              >
-                <h3
-                  className={style.articleTitle}
-                  style={{
-                    flex: 1,
-                    marginBottom: rhythm(1 / 4),
-                    overflow: "hidden",
-                    whiteSpace: "nowrap",
-                    textOverflow: "ellipsis",
-                  }}
-                >
-                  <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                    {title}
-                  </Link>
-                </h3>
-                <small
-                  style={{
-                    background: "#000",
-                    color: "#fff",
-                    padding: "2px 6px",
-                  }}
-                >
+              <header className={style.articleHeader}>
+                <small className={style.articleDate}>
                   {node.frontmatter.date}
                 </small>
+                <span className={style.articleTitle}>
+                  <Link className={style.articleLink} to={node.fields.slug}>
+                    {title}
+                  </Link>
+                </span>
               </header>
-              <section>
+              <section className={style.articleSubtitle}>
                 <p
                   dangerouslySetInnerHTML={{
                     __html: node.frontmatter.description || node.excerpt,

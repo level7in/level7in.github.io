@@ -6,6 +6,7 @@ module.exports = {
     siteUrl: `https://www.level7in.com`,
     social: {
       twitter: `long_qin`,
+      github: `level7in`
     },
   },
   plugins: [
@@ -50,7 +51,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
+        trackingId: `UA-156157810-1`,
       },
     },
     `gatsby-plugin-feed`,
@@ -73,12 +74,7 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
-    {
-      resolve: `gatsby-plugin-less`,
-      options: {
-        strictMath: true,
-      },
-    },
+    `gatsby-plugin-less`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
