@@ -58,8 +58,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `7insBlog`,
+        short_name: `7insBlog`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
@@ -75,6 +75,17 @@ module.exports = {
       },
     },
     `gatsby-plugin-less`,
+    {
+      resolve: `gatsby-alias-imports`,
+      options: {
+        aliases: {
+          components: `src/components`,
+          pages: `src/pages`,
+          theme: `src/theme`,
+          static: `src/static`
+        }
+      }
+    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

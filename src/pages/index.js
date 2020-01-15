@@ -1,10 +1,10 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
-import Bio from "../components/bio"
-import Layout from "../components/layout/layout"
-import SEO from "../components/seo"
-import style from "../theme/normal.module.less"
+import Bio from "components/bio"
+import Layout from "components/layout/layout"
+import SEO from "components/seo"
+import style from "theme/normal.module.less"
 class BlogIndex extends React.Component {
   render() {
     const { data } = this.props
@@ -14,30 +14,41 @@ class BlogIndex extends React.Component {
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="首页" />
         <Bio />
-        {posts.map(({ node }) => {
+        {posts.map(({ node, next }) => {
           const title = node.frontmatter.title || node.fields.slug
-          const prevDate = node.frontmatter.date
-          const flag = node.frontmatter.date
           return (
-            <article key={node.fields.slug}>
-              <header className={style.articleHeader}>
-                <small className={style.articleDate}>
-                  {node.frontmatter.date}
-                </small>
-                <span className={style.articleTitle}>
-                  <Link className={style.articleLink} to={node.fields.slug}>
-                    {title}
-                  </Link>
-                </span>
-              </header>
-              <section className={style.articleSubtitle}>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: node.frontmatter.description || node.excerpt,
-                  }}
-                />
-              </section>
-            </article>
+            <>
+              <article key={node.fields.slug}>
+                <header className={style.articleHeader}>
+                  <small className={style.articleDate}>
+                    {node.frontmatter.date}
+                  </small>
+                  <span className={style.articleTitle}>
+                    <Link className={style.articleLink} to={node.fields.slug}>
+                      {title}
+                    </Link>
+                  </span>
+                </header>
+                <section className={style.articleSubtitle}>
+                  <div
+                    className={style.articleExcerpt}
+                    dangerouslySetInnerHTML={{
+                      __html: node.frontmatter.description || node.excerpt,
+                    }}
+                  />
+                  <p className={style.minToRead}>
+                    {node.timeToRead} mins to read
+                  </p>
+                </section>
+              </article>
+              {next &&
+                node.frontmatter.date.slice(0, 4) !==
+                  next.frontmatter.date.slice(0, 4) && (
+                  <h1 className={style.years}>
+                    {next.frontmatter.date.slice(0, 4)} &gt;
+                  </h1>
+                )}{" "}
+            </>
           )
         })}
       </Layout>
@@ -65,6 +76,12 @@ export const pageQuery = graphql`
             date(formatString: "YYYY-MM-DD")
             title
             description
+          }
+          timeToRead
+        }
+        next {
+          frontmatter {
+            date(formatString: "YYYY-MM-DD")
           }
         }
       }

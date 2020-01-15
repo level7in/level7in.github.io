@@ -2,29 +2,22 @@ import React from "react"
 import { Link } from "gatsby"
 
 import { rhythm, scale } from "../../utils/typography"
-
+import style from "./style.module.less"
 class Layout extends React.Component {
   render() {
-    const { location, title, children } = this.props
+    const { title, children } = this.props
     let header
 
     header = (
       <h1
         style={{
-          ...scale(1.5),
+          ...scale(1),
           margin: "0 auto",
           maxWidth: rhythm(24),
-          padding: `10px ${rhythm(3 / 4)}`
+          padding: `10px ${rhythm(3 / 4)}`,
         }}
       >
-        <Link
-          style={{
-            boxShadow: `none`,
-            textDecoration: `none`,
-            color: `inherit`,
-          }}
-          to={`/`}
-        >
+        <Link className={style.link} to={`/`}>
           {title}
         </Link>
       </h1>
@@ -32,19 +25,7 @@ class Layout extends React.Component {
 
     return (
       <div>
-        <header
-          style={{
-            position: "sticky",
-            top: 0,
-            background: "transparent",
-            color: "#000",
-            zIndex: 1,
-            backdropFilter: "saturate(180%) blur(20px)",
-            borderBottom: "1px solid rgba(0, 0, 0, 0.05)",
-          }}
-        >
-          {header}
-        </header>
+        <header className={style.header}>{header}</header>
         <main
           style={{
             marginLeft: `auto`,
@@ -57,11 +38,10 @@ class Layout extends React.Component {
         </main>
         <footer
           style={{
-            marginLeft: `auto`,
-            marginRight: `auto`,
             maxWidth: rhythm(24),
             padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
           }}
+          className={style.footer}
         >
           level7in © {new Date().getFullYear()}, In ShenZhen, Built with
           {` `}
