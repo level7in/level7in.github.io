@@ -3,7 +3,7 @@ module.exports = {
     title: `7insBlog`,
     author: `level7in`,
     description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://www.level7in.com`,
+    siteUrl: `http://www.level7in.com`,
     social: {
       twitter: `long_qin`,
       github: `level7in`
@@ -82,7 +82,8 @@ module.exports = {
           components: `src/components`,
           pages: `src/pages`,
           theme: `src/theme`,
-          static: `src/static`
+          static: `src/static`,
+          img: `src/img`
         }
       }
     }

@@ -12,12 +12,12 @@ class BlogIndex extends React.Component {
     const posts = data.allMarkdownRemark.edges
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <SEO title="首页" />
+        <SEO title="Index" />
         <Bio />
         {posts.map(({ node, next }) => {
           const title = node.frontmatter.title || node.fields.slug
           return (
-            <>
+            <React.Fragment key={node.fields.slug}>
               <article key={node.fields.slug}>
                 <header className={style.articleHeader}>
                   <small className={style.articleDate}>
@@ -37,7 +37,7 @@ class BlogIndex extends React.Component {
                     }}
                   />
                   <p className={style.minToRead}>
-                    {node.timeToRead} mins to read
+                    {node.timeToRead} min read
                   </p>
                 </section>
               </article>
@@ -48,7 +48,7 @@ class BlogIndex extends React.Component {
                     {next.frontmatter.date.slice(0, 4)} &gt;
                   </h1>
                 )}{" "}
-            </>
+            </React.Fragment>
           )
         })}
       </Layout>

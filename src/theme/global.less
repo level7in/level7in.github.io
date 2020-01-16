@@ -1,0 +1,31 @@
+body {
+  background-color: var(--bg);
+  transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+  & h1,
+  h2,
+  h3,
+  h4,
+  p,
+  div {
+    color: var(--color);
+  }
+}
+body.light {
+  --theme-blue: rgb(0, 85, 241);
+  --bg: #ffffff;
+  --bg-secondary: rgb(249, 250, 251);
+  --color: #000;
+  --border-color: rgba(0, 0, 0, 0.5);
+  --border-2-color: rgba(0, 0, 0, 0.1);
+  --date-color: #000;
+}
+
+body.dark {
+  --theme-blue: desaturate(rgb(0, 85, 241), 50%); // 降低饱和度
+  --bg: #282c35;
+  --bg-secondary: rgb(54, 60, 72);
+  --color: #fff;
+  --border-color: rgba(255, 255, 255, 0.5);
+  --border-2-color: rgba(255, 255, 255, 0.1);
+  --date-color: #282c35;
+}
