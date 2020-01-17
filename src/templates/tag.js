@@ -10,9 +10,7 @@ const Tags = ({ pageContext, data }) => {
   const { tag } = pageContext
   const { edges, totalCount } = data.allMarkdownRemark
   const { siteMetadata } = data.site
-  const tagHeader = `${totalCount} post${
-    totalCount === 1 ? "" : "s"
-  } tagged with "${tag}"`
+  const tagHeader = `${totalCount} 篇 文章包含 "${tag}" 标签`
 
   return (
     <Layout title={siteMetadata.title}>
@@ -30,11 +28,7 @@ const Tags = ({ pageContext, data }) => {
             )
           })}
         </ul>
-        {/*
-              This links to a page that does not yet exist.
-              You'll come back to it!
-            */}
-        <Link to="/tags">All tags</Link>
+        <Link to="/tags">全部标签</Link>
       </div>
     </Layout>
   )

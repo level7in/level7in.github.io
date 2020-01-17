@@ -1,14 +1,13 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-
-import Bio from "../components/bio"
-import Layout from "../components/layout/layout"
-import SEO from "../components/seo"
+import kebabCase from "lodash/kebabCase"
+import Bio from "components/bio"
+import Layout from "components/layout/layout"
+import SEO from "components/seo"
 import { rhythm, scale } from "../utils/typography"
-
+import style from "theme/normal.module.less"
 class BlogPostTemplate extends React.Component {
   render() {
-    console.log('this.props', this.props)
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
@@ -29,15 +28,26 @@ class BlogPostTemplate extends React.Component {
             >
               {post.frontmatter.title}
             </h1>
-            <p
+            <div
               style={{
                 ...scale(-1 / 5),
-                display: `block`,
                 marginBottom: rhythm(1),
               }}
+              className={style.postMeta}
             >
-              {post.frontmatter.date}
-            </p>
+              <div>{post.frontmatter.date}</div>
+              <div className={style.postReadTime}>· {post.timeToRead} min </div>
+              <div className={style.postTags}>
+                {post.frontmatter.tags.map(tag => (
+                  <Link
+                    to={`/tags/${kebabCase(tag)}`}
+                    key={`${post.frontmatter.date}-${tag}`}
+                  >
+                    <div className={style.tag}>{tag}</div>
+                  </Link>
+                ))}
+              </div>
+            </div>
           </header>
           <section dangerouslySetInnerHTML={{ __html: post.html }} />
           <hr
@@ -93,10 +103,12 @@ export const pageQuery = graphql`
       id
       excerpt(pruneLength: 160)
       html
+      timeToRead
       frontmatter {
         title
         date(formatString: "YYYY-MM-DD")
         description
+        tags
       }
     }
   }

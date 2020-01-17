@@ -112,18 +112,20 @@ Indented code
 
 Block code "fences"
 
-```
+```{numberLines: true}
 Sample text here...
 ```
 
 Syntax highlighting
 
-``` js
+``` js{6}{numberLines: true}
 var foo = function (bar) {
   return bar++;
 };
 
 console.log(foo(5));
+console.log('高亮这一行')
+console.log('JavaScript (JS) is a lightweight, interpreted, or just-in-time compiled programming language with first-class functions. While it is most well-known as the scripting language for Web pages')
 ```
 
 ## Tables
