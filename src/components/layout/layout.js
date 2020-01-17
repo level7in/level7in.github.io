@@ -9,7 +9,7 @@ class Layout extends React.Component {
 
     // 夜间模式切换
     if (typeof window !== `undefined`) {
-      window.__onThemeChange = function() {}
+      window.__onThemeChange = function () { }
       function setTheme(newTheme) {
         window.__theme = newTheme
         preferredTheme = newTheme
@@ -20,13 +20,13 @@ class Layout extends React.Component {
       let preferredTheme
       try {
         preferredTheme = localStorage.getItem("theme")
-      } catch (err) {}
+      } catch (err) { }
 
-      window.__setPreferredTheme = function(newTheme) {
+      window.__setPreferredTheme = function (newTheme) {
         setTheme(newTheme)
         try {
           localStorage.setItem("theme", newTheme)
-        } catch (err) {}
+        } catch (err) { }
       }
 
       const darkQuery = window.matchMedia("(prefers-color-scheme: dark)")
@@ -36,20 +36,19 @@ class Layout extends React.Component {
       })
 
       setTheme(preferredTheme || (darkQuery.matches ? "dark" : "light"))
-      const isGet = typeof preferredTheme === "object" ? false : true
+      const isGet = (typeof preferredTheme) === "object" ? false : true
       // theme初始值
       this.state = {
-        theme: (isGet && preferredTheme === "dark") || darkQuery.matches,
+        theme: isGet ? preferredTheme === "dark" : darkQuery.matches,
+      }
+    } else {
+      // theme初始值
+      this.state = {
+        theme: false,
       }
     }
   }
 
-  componentDidMount() {
-    // const darkQuery = window.matchMedia("(prefers-color-scheme: dark)")
-    // darkQuery.addListener(e => {
-    //   this.setState({ theme: e.matches })
-    // })
-  }
   render() {
     const { title, children } = this.props
     const { theme } = this.state
