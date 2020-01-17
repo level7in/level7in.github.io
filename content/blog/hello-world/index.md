@@ -9,9 +9,10 @@ tags: ['hello','Gatsby', '实践']
 
 WIP:
 - [ ] 样式调整
-- [ ] 标签
 - [ ] 页面过渡
 
 Done:
+- [x] 标签
 - [x] 夜间模式
 - [x] typography.js
+- [x] Markdown语法高亮

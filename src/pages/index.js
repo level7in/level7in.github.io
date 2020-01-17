@@ -64,7 +64,7 @@ class BlogIndex extends React.Component {
                   <h1 className={style.years}>
                     {next.frontmatter.date.slice(0, 4)} &gt;
                   </h1>
-                )}{" "}
+                )}
             </React.Fragment>
           )
         })}
