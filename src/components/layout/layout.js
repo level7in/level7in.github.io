@@ -4,14 +4,49 @@ import logo from "img/final0.png"
 import { rhythm, scale } from "../../utils/typography"
 import style from "./style.module.less"
 class Layout extends React.Component {
-  state = {
-    theme: window.__theme === "dark",
-  }
-  componentDidMount() {
+  constructor(props) {
+    super(props)
+
+    // 夜间模式切换
+    window.__onThemeChange = function() {}
+    function setTheme(newTheme) {
+      window.__theme = newTheme
+      preferredTheme = newTheme
+      document.body.className = newTheme
+      window.__onThemeChange(newTheme)
+    }
+
+    let preferredTheme
+    try {
+      preferredTheme = localStorage.getItem("theme")
+    } catch (err) {}
+
+    window.__setPreferredTheme = function(newTheme) {
+      setTheme(newTheme)
+      try {
+        localStorage.setItem("theme", newTheme)
+      } catch (err) {}
+    }
+
     const darkQuery = window.matchMedia("(prefers-color-scheme: dark)")
     darkQuery.addListener(e => {
+      window.__setPreferredTheme(e.matches ? "dark" : "light")
       this.setState({ theme: e.matches })
     })
+
+    setTheme(preferredTheme || (darkQuery.matches ? "dark" : "light"))
+    const isGet = typeof preferredTheme === "object" ? false : true
+    // theme初始值
+    this.state = {
+      theme: (isGet && preferredTheme === "dark") || darkQuery.matches,
+    }
+  }
+
+  componentDidMount() {
+    // const darkQuery = window.matchMedia("(prefers-color-scheme: dark)")
+    // darkQuery.addListener(e => {
+    //   this.setState({ theme: e.matches })
+    // })
   }
   render() {
     const { title, children } = this.props

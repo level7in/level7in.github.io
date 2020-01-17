@@ -2,6 +2,7 @@
 title: Hello Gatsbyjs!
 date: "2020-01-16T10:59:43.160Z"
 description: "again~"
+tags: ['hello','Gatsby', '实践']
 ---
 
 ### 又一次尝试Gatsbyjs

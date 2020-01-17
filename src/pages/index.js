@@ -1,6 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-
+import kebabCase from "lodash/kebabCase"
 import Bio from "components/bio"
 import Layout from "components/layout/layout"
 import SEO from "components/seo"
@@ -36,10 +36,27 @@ class BlogIndex extends React.Component {
                       __html: node.frontmatter.description || node.excerpt,
                     }}
                   />
-                  <p className={style.minToRead}>
-                    {node.timeToRead} min read
-                  </p>
                 </section>
+                <div className={style.articleFoot}>
+                  <div className={style.minToRead}>
+                    {node.timeToRead} min read
+                  </div>
+                  <div className={style.tags}>
+                    {node.frontmatter.tags.map(tag => {
+                      return (
+                        <Link
+                          to={`/tags/${kebabCase(tag)}`}
+                          key={`${node.frontmatter.date}-${tag}`}
+                        >
+                          <span className={style.tag}>{tag}</span>
+                        </Link>
+                      )
+                    })}
+                    <Link to={`/tags/`} key={`${node.frontmatter.date}-more`}>
+                      <span className={style.tag}>···</span>
+                    </Link>
+                  </div>
+                </div>
               </article>
               {next &&
                 node.frontmatter.date.slice(0, 4) !==
@@ -76,6 +93,7 @@ export const pageQuery = graphql`
             date(formatString: "YYYY-MM-DD")
             title
             description
+            tags
           }
           timeToRead
         }
