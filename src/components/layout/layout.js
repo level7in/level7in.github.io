@@ -8,37 +8,39 @@ class Layout extends React.Component {
     super(props)
 
     // 夜间模式切换
-    window.__onThemeChange = function() {}
-    function setTheme(newTheme) {
-      window.__theme = newTheme
-      preferredTheme = newTheme
-      document.body.className = newTheme
-      window.__onThemeChange(newTheme)
-    }
+    if (typeof window !== `undefined`) {
+      window.__onThemeChange = function() {}
+      function setTheme(newTheme) {
+        window.__theme = newTheme
+        preferredTheme = newTheme
+        document.body.className = newTheme
+        window.__onThemeChange(newTheme)
+      }
 
-    let preferredTheme
-    try {
-      preferredTheme = localStorage.getItem("theme")
-    } catch (err) {}
-
-    window.__setPreferredTheme = function(newTheme) {
-      setTheme(newTheme)
+      let preferredTheme
       try {
-        localStorage.setItem("theme", newTheme)
+        preferredTheme = localStorage.getItem("theme")
       } catch (err) {}
-    }
 
-    const darkQuery = window.matchMedia("(prefers-color-scheme: dark)")
-    darkQuery.addListener(e => {
-      window.__setPreferredTheme(e.matches ? "dark" : "light")
-      this.setState({ theme: e.matches })
-    })
+      window.__setPreferredTheme = function(newTheme) {
+        setTheme(newTheme)
+        try {
+          localStorage.setItem("theme", newTheme)
+        } catch (err) {}
+      }
 
-    setTheme(preferredTheme || (darkQuery.matches ? "dark" : "light"))
-    const isGet = typeof preferredTheme === "object" ? false : true
-    // theme初始值
-    this.state = {
-      theme: (isGet && preferredTheme === "dark") || darkQuery.matches,
+      const darkQuery = window.matchMedia("(prefers-color-scheme: dark)")
+      darkQuery.addListener(e => {
+        window.__setPreferredTheme(e.matches ? "dark" : "light")
+        this.setState({ theme: e.matches })
+      })
+
+      setTheme(preferredTheme || (darkQuery.matches ? "dark" : "light"))
+      const isGet = typeof preferredTheme === "object" ? false : true
+      // theme初始值
+      this.state = {
+        theme: (isGet && preferredTheme === "dark") || darkQuery.matches,
+      }
     }
   }
 
@@ -70,7 +72,9 @@ class Layout extends React.Component {
           checked={theme}
           id="theme"
           onChange={() => {
-            window.__setPreferredTheme(!theme ? "dark" : "light")
+            if (typeof window !== `undefined`) {
+              window.__setPreferredTheme(!theme ? "dark" : "light")
+            }
             this.setState({ theme: !theme })
           }}
         ></input>
@@ -87,7 +91,7 @@ class Layout extends React.Component {
             marginRight: `auto`,
             maxWidth: rhythm(24),
             padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-            minHeight: `calc(100vh - 10.9rem)`
+            minHeight: `calc(100vh - 10.9rem)`,
           }}
         >
           {children}
