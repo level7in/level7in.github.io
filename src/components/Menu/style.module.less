@@ -1,0 +1,25 @@
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  overscroll-behavior-y: none;
+  .menuList {
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    max-height: 500vh;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 30px 60px 0px;
+    .link {
+      text-align: center;
+      padding: 1rem 0;
+      width: 100%;
+      border-bottom: 1px solid var(--border-2-color);
+      text-decoration: none;
+    }
+  }
+}

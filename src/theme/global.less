@@ -13,6 +13,7 @@ body {
 }
 body.light {
   --theme-blue: rgb(0, 85, 241);
+  --theme-yellow: rgb(255, 229, 100);
   --bg: #ffffff;
   --bg-secondary: rgb(249, 250, 251);
   --color: #000;
@@ -24,6 +25,7 @@ body.light {
 
 body.dark {
   --theme-blue: desaturate(rgb(0, 85, 241), 50%); // 降低饱和度
+  --theme-yellow: darken(rgb(255, 229, 100), 40%); // 降低颜色亮度
   --bg: #282c35;
   --bg-secondary: rgb(54, 60, 72);
   --color: #fff;
@@ -43,14 +45,18 @@ body.dark {
     right: 1rem;
     top: 0;
     width: fit-content;
-    padding: 0 .5rem;
-    height: .9rem;
+    padding: 0 0.5rem;
+    height: 0.9rem;
     min-width: 2rem;
     text-align: center;
     color: #000;
     border-top: 1px solid rgba(155, 125, 4, 0.5);
     background: #ffcd00;
-    border-radius: 0 0 .1rem .1rem;
+    border-radius: 0 0 0.1rem 0.1rem;
     text-transform: uppercase;
+  }
+  // 覆盖
+  .gatsby-resp-image-image {
+    box-shadow: none !important;
   }
 }

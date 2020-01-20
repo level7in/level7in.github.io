@@ -61,12 +61,44 @@
   .tags {
     .tag {
       font-size: 0.7rem;
-      color: #fff;
       margin: 0 0.3rem;
       padding: 0.1rem 0.2rem;
-      background: var(--date-color);
-      &:last-of-type {
-        margin-right: 0;
+      position: relative;
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        height: 0.5rem;
+        background: var(--theme-yellow);
+        z-index: -1;
+        transition: all 0.15s ease-in-out;
+      }
+      &:hover::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        height: 1rem;
+        background: var(--theme-yellow);
+        z-index: -1;
+        transition: all 0.15s ease-in-out;
+      }
+      
+    }
+    .tagMore {
+      font-size: 0.7rem;
+      display: inline-block;
+      margin: 0 0.3rem;
+      width: 1rem;
+      text-align: center;
+      margin-right: 0;
+      background: var(--inlineCode-bg);
+      border-radius: 50%;
+      &:active{
+        box-shadow: 0 0 0 2px var(--theme-yellow);
       }
     }
   }
@@ -90,18 +122,24 @@
   background-size: 0.625rem 0.625rem;
 }
 
-.postMeta{
+.postMeta {
   display: flex;
   flex-direction: row;
-  .postReadTime{
-    padding: 0 .5rem;
+  white-space: nowrap;
+  .postReadTime {
+    padding: 0 0.5rem;
   }
-  .postTags{
+  .postTags {
     flex: 1;
     display: flex;
     justify-content: flex-end;
-    .tag{
-      margin: 0 .3rem;
+    .tag {
+      
+      border-radius: 0.5rem;
+      background: var(--inlineCode-bg);
+      padding: 0 0.3rem;
+      margin: 0 0.3rem;
+      text-decoration: none;
     }
   }
 }

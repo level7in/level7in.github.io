@@ -32,6 +32,7 @@ class BlogPostTemplate extends React.Component {
               style={{
                 ...scale(-1 / 5),
                 marginBottom: rhythm(1),
+                marginTop: rhythm(1 / 4),
               }}
               className={style.postMeta}
             >
@@ -41,6 +42,7 @@ class BlogPostTemplate extends React.Component {
                 {post.frontmatter.tags.map(tag => (
                   <Link
                     to={`/tags/${kebabCase(tag)}`}
+                    style={{ textDecoration: "none" }}
                     key={`${post.frontmatter.date}-${tag}`}
                   >
                     <div className={style.tag}>{tag}</div>
