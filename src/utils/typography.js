@@ -31,17 +31,6 @@ funstonTheme.overrideThemeStyles = () => {
      * If you only want to use line numbering
      */
     '.gatsby-highlight pre[class*="language-"].line-numbers': {
-      "padding-left": "2.8em",
-    },
-    ".gatsby-highlight": {
-      "background-color": "#011627",
-      "border-radius": "0.3em",
-      margin: "0.5em 0",
-      padding: "1em",
-      overflow: "auto",
-    },
-
-    '.gatsby-highlight pre[class*="language-"].line-numbers': {
       padding: "0",
       "padding-left": "2.8em",
       overflow: "initial",

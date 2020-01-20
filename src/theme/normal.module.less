@@ -34,7 +34,6 @@
     font-family: "Patua One", sans-serif;
     font-weight: 400;
     text-rendering: optimizeLegibility;
-
     .articleLink {
       text-decoration: none;
     }
@@ -59,11 +58,15 @@
     font-size: 0.9rem;
   }
   .tags {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
     .tag {
       font-size: 0.7rem;
       margin: 0 0.3rem;
       padding: 0.1rem 0.2rem;
       position: relative;
+      white-space: nowrap;
       &::before {
         content: "";
         position: absolute;
@@ -86,7 +89,6 @@
         z-index: -1;
         transition: all 0.15s ease-in-out;
       }
-      
     }
     .tagMore {
       font-size: 0.7rem;
@@ -95,10 +97,12 @@
       width: 1rem;
       text-align: center;
       margin-right: 0;
-      background: var(--inlineCode-bg);
       border-radius: 50%;
-      &:active{
-        box-shadow: 0 0 0 2px var(--theme-yellow);
+      svg {
+        transform: translate(0.15rem, 0.2rem);
+      }
+      &:hover {
+        background: var(--theme-yellow);
       }
     }
   }
@@ -134,7 +138,6 @@
     display: flex;
     justify-content: flex-end;
     .tag {
-      
       border-radius: 0.5rem;
       background: var(--inlineCode-bg);
       padding: 0 0.3rem;
@@ -142,4 +145,12 @@
       text-decoration: none;
     }
   }
+}
+
+.prevNext {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
 }

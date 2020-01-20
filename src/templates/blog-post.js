@@ -62,15 +62,7 @@ class BlogPostTemplate extends React.Component {
         </article>
 
         <nav>
-          <ul
-            style={{
-              display: `flex`,
-              flexWrap: `wrap`,
-              justifyContent: `space-between`,
-              listStyle: `none`,
-              padding: 0,
-            }}
-          >
+          <ul className={style.prevNext}>
             <li>
               {previous && (
                 <Link to={previous.fields.slug} rel="prev">

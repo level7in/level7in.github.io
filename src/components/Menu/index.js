@@ -11,6 +11,8 @@ export default class Menu extends React.Component {
         className={style.menu}
         onClick={() => this.props.close()}
         onKeyDown={() => this.props.close()}
+        role="menu"
+        tabIndex="0"
       >
         <Spring
           from={{ opacity: 0, transform: "translateY(-0.5rem)" }}

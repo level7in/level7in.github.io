@@ -11,7 +11,13 @@ class Layout extends React.Component {
     super(props)
 
     // 夜间模式切换
-    if (typeof window !== `undefined`) {
+    let preferredTheme
+    try {
+      preferredTheme = localStorage.getItem("theme")
+    } catch (err) {}
+    const isGet = typeof preferredTheme === "object" ? false : true
+
+    if (typeof window === "object") {
       window.__onThemeChange = function() {}
       function setTheme(newTheme) {
         window.__theme = newTheme
@@ -19,11 +25,6 @@ class Layout extends React.Component {
         document.body.className = newTheme
         window.__onThemeChange(newTheme)
       }
-
-      let preferredTheme
-      try {
-        preferredTheme = localStorage.getItem("theme")
-      } catch (err) {}
 
       window.__setPreferredTheme = function(newTheme) {
         setTheme(newTheme)
@@ -39,15 +40,15 @@ class Layout extends React.Component {
       })
 
       setTheme(preferredTheme || (darkQuery.matches ? "dark" : "light"))
-      const isGet = typeof preferredTheme === "object" ? false : true
       // theme初始值
       this.state = {
         theme: isGet ? preferredTheme === "dark" : darkQuery.matches,
+        menuVisible: false,
       }
     } else {
       // theme初始值
       this.state = {
-        theme: false,
+        theme: isGet ? preferredTheme === "dark" : false,
         menuVisible: false,
       }
     }
@@ -66,7 +67,6 @@ class Layout extends React.Component {
     const header = (
       <div
         style={{
-          // ...scale(1),
           maxWidth: rhythm(24),
           padding: `10px ${rhythm(3 / 4)}`,
         }}
@@ -96,6 +96,8 @@ class Layout extends React.Component {
                 style={props}
                 onClick={this.switchTheme.bind(this)}
                 onKeyDown={this.switchTheme.bind(this)}
+                role="button"
+                tabIndex="0"
               />
             )}
           </Spring>
@@ -115,6 +117,9 @@ class Layout extends React.Component {
           <div
             className={style.more}
             onClick={() => this.setState({ menuVisible: true })}
+            onKeyDown={this.switchTheme.bind(this)}
+            role="button"
+            tabIndex="0"
           >
             <Spring
               from={{ opacity: 0, x2: 0, x1: 12 }}
@@ -127,7 +132,7 @@ class Layout extends React.Component {
                   width="28"
                   height="28"
                   viewBox="0 0 24 24"
-                  fill={theme ? "#fff" : "#000"}
+                  fill="none"
                   stroke="currentColor"
                   strokeWidth="1"
                   strokeLinecap="round"
