@@ -1,4 +1,35 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[7insBlog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>http://www.level7in.com</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 17 Jan 2020 12:38:50 GMT</lastBuildDate><item><title><![CDATA[Hello Gatsbyjs!]]></title><description><![CDATA[又一次尝试Gatsbyjs WIP: 样式调整 页面过渡 Done: 标签 夜间模式 typography.js Markdown语法高亮]]></description><link>http://www.level7in.com/hello-world/</link><guid isPermaLink="false">http://www.level7in.com/hello-world/</guid><pubDate>Thu, 16 Jan 2020 10:59:43 GMT</pubDate><content:encoded>&lt;h3&gt;又一次尝试Gatsbyjs&lt;/h3&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[7insBlog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>http://www.level7in.com</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 20 Jan 2020 07:48:32 GMT</lastBuildDate><item><title><![CDATA[关于]]></title><link>http://www.level7in.com/about/</link><guid isPermaLink="false">http://www.level7in.com/about/</guid><pubDate>Mon, 20 Jan 2020 03:57:59 GMT</pubDate><content:encoded></content:encoded></item><item><title><![CDATA[Hello Gatsbyjs!]]></title><description><![CDATA[又一次尝试Gatsbyjs  WIP: 样式调整 页面过渡 Done: 标签 夜间模式 typography.js Markdown语法高亮]]></description><link>http://www.level7in.com/hello-world/</link><guid isPermaLink="false">http://www.level7in.com/hello-world/</guid><pubDate>Thu, 16 Jan 2020 10:59:43 GMT</pubDate><content:encoded>&lt;h3&gt;又一次尝试Gatsbyjs&lt;/h3&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/442022ccaad3b9de3e7a574c4534ab43/b0eb8/Image%20may%20contain%20screenshot%20and%20cartoon.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 44.266666666666666%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAAsSAAALEgHS3X78AAACEklEQVQoz5WRXUjTYRTG3/+WRdqgkMIlFIRz5FZIH7NcM4vQ6qLmhX0hNcjEivQmW1RkURejIFKClIiaiqOVJOlFoqWpMBlGiI4sMggKXYIUFtuYvr/+c45uQujA4Zz3cJ7nfc45wi/CukAarmGHHHt9SM60l8lp92m6HVmyUKjmsqOkif+wCRPdoWoYVb3ZKLmVBY1nofYiWFZijfUcyUXjNKO4jMxh3tyNR5Biog3l1yeU2DtLqPWgBX50Ev54m8j9Ncw0HiVaX8Z02X7YnDteHmss2D6dFIuDKxBtehRUYGQEZdCGNiFs6BlaUAmfLur19G8I4z8DHZXQehlqVHWmjUMfxLbqVQmA0yzNiXzcjSaRqyRG1df+nXlEiEuioeTCss6mSlNf14HMnufpy70VSwreWfQHsdpzIqtLtmI/b2bTI4Ms6kjGMD9ucuAU117ZZMh3lanQJKockhbcr2lPdN3uPHaVm+XSRG1gPTnBKpyfT/L+903wHUNe10PdcRjs4q2oW+wRrpRWrdswpeEK4vFelOzsbi3/+CAKW35W4RvTgT8TvtQTHnkAd4rhXgV9PU3sm2u8keIR51KfiMPpXrEzo0UUJTmEKEZkFEqRnydF4GX8it9GsQSbVcIT0JLKbK0JHpbytb+B0gVH3ZEf12dVY74tnocicdKYfZ/EMexltrcGj7o33fx5xMALtH8A5MMljvILHH4AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Gatsbyjs logo&quot;
+        title=&quot;Gatsbyjs logo&quot;
+        src=&quot;/static/442022ccaad3b9de3e7a574c4534ab43/799d3/Image%20may%20contain%20screenshot%20and%20cartoon.png&quot;
+        srcset=&quot;/static/442022ccaad3b9de3e7a574c4534ab43/00d96/Image%20may%20contain%20screenshot%20and%20cartoon.png 148w,
+/static/442022ccaad3b9de3e7a574c4534ab43/0b23c/Image%20may%20contain%20screenshot%20and%20cartoon.png 295w,
+/static/442022ccaad3b9de3e7a574c4534ab43/799d3/Image%20may%20contain%20screenshot%20and%20cartoon.png 590w,
+/static/442022ccaad3b9de3e7a574c4534ab43/2a3d6/Image%20may%20contain%20screenshot%20and%20cartoon.png 885w,
+/static/442022ccaad3b9de3e7a574c4534ab43/ae92f/Image%20may%20contain%20screenshot%20and%20cartoon.png 1180w,
+/static/442022ccaad3b9de3e7a574c4534ab43/b0eb8/Image%20may%20contain%20screenshot%20and%20cartoon.png 1500w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;WIP:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; disabled&gt; 样式调整&lt;/li&gt;
