@@ -60,26 +60,26 @@
       flex-direction: row-reverse;
       flex: 1;
       padding: 0 0 0 1rem;
-      div{
-        margin: 0 .7rem;
+      div {
+        margin: 0 0.7rem;
         font-weight: lighter;
-        &:first-of-type{
+        &:first-of-type {
           margin-right: 0;
         }
       }
-      @media (max-width: 500px){
-        .jumpLink{
+      @media (max-width: 500px) {
+        .jumpLink {
           display: none;
         }
-        .more{
+        .more {
           display: block;
           cursor: pointer;
           width: 1.4rem;
           height: 1.4rem;
         }
       }
-      @media (min-width: 500px){
-        .more{
+      @media (min-width: 500px) {
+        .more {
           display: none;
         }
       }
@@ -116,7 +116,8 @@
     transparent 75%,
     transparent
   );
-  box-shadow: 0 -10px 0 inset rgba(0, 0, 0, 0.5);
+  box-shadow: 0 -10px 0 inset rgba(0, 0, 0, 0.5),
+    0px 0px 20px 6px rgba(0, 90, 255, 0.2);
   border-radius: 0.1rem 0.1rem 0 0;
   background-size: 2rem 2rem;
   animation: sheen 5s linear 0s infinite normal none running;
