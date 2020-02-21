@@ -11,75 +11,85 @@ class BlogPostTemplate extends React.Component {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
-
     return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO
-          title={post.frontmatter.title}
-          description={post.frontmatter.description || post.excerpt}
-        />
-        <article>
-          <header>
-            <h1
-              style={{
-                marginTop: rhythm(1),
-                marginBottom: 0,
-              }}
-            >
-              {post.frontmatter.title}
-            </h1>
-            <div
-              style={{
-                ...scale(-1 / 5),
-                marginBottom: rhythm(1),
-                marginTop: rhythm(1 / 4),
-              }}
-              className={style.postMeta}
-            >
-              <div>{post.frontmatter.date}</div>
-              <div className={style.postReadTime}>· {post.timeToRead} min </div>
-              <div className={style.postTags}>
-                {post.frontmatter.tags.map(tag => (
-                  <Link
-                    to={`/tags/${kebabCase(tag)}`}
-                    style={{ textDecoration: "none" }}
-                    key={`${post.frontmatter.date}-${tag}`}
-                  >
-                    <div className={style.tag}>{tag}</div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </header>
-          <section dangerouslySetInnerHTML={{ __html: post.html }} />
-          <hr
-            style={{
-              marginBottom: rhythm(1),
-            }}
+      <>
+        <Layout location={this.props.location} title={siteTitle}>
+          <SEO
+            title={post.frontmatter.title}
+            description={post.frontmatter.description || post.excerpt}
           />
+          <article>
+            <header>
+              <h1
+                style={{
+                  marginTop: rhythm(1),
+                  marginBottom: 0,
+                }}
+              >
+                {post.frontmatter.title}
+              </h1>
+              <div
+                style={{
+                  ...scale(-1 / 5),
+                  marginBottom: rhythm(1),
+                  marginTop: rhythm(1 / 4),
+                }}
+                className={style.postMeta}
+              >
+                <div>{post.frontmatter.date}</div>
+                <div className={style.postReadTime}>
+                  · {post.timeToRead} min{" "}
+                </div>
+                <div className={style.postTags}>
+                  {post.frontmatter.tags.map(tag => (
+                    <Link
+                      to={`/tags/${kebabCase(tag)}`}
+                      style={{ textDecoration: "none" }}
+                      key={`${post.frontmatter.date}-${tag}`}
+                    >
+                      <div className={style.tag}>{tag}</div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </header>
+            <section dangerouslySetInnerHTML={{ __html: post.html }} />
+            <hr
+              style={{
+                marginBottom: rhythm(1),
+              }}
+            />
 
-          <Bio />
-        </article>
+            <Bio />
+          </article>
 
-        <nav>
-          <ul className={style.prevNext}>
-            <li>
-              {previous && (
-                <Link to={previous.fields.slug} rel="prev">
-                  ← {previous.frontmatter.title}
-                </Link>
-              )}
-            </li>
-            <li>
-              {next && (
-                <Link to={next.fields.slug} rel="next">
-                  {next.frontmatter.title} →
-                </Link>
-              )}
-            </li>
-          </ul>
-        </nav>
-      </Layout>
+          <nav>
+            <ul className={style.prevNext}>
+              <li>
+                {previous && (
+                  <Link to={previous.fields.slug} rel="prev">
+                    ← {previous.frontmatter.title}
+                  </Link>
+                )}
+              </li>
+              <li>
+                {next && (
+                  <Link to={next.fields.slug} rel="next">
+                    {next.frontmatter.title} →
+                  </Link>
+                )}
+              </li>
+            </ul>
+          </nav>
+        </Layout>
+        {/* 目录 */}
+        {post.tableOfContents && (
+          <div
+            className={style.toc}
+            dangerouslySetInnerHTML={{ __html: post.tableOfContents }}
+          />
+        )}
+      </>
     )
   }
 }
@@ -98,6 +108,7 @@ export const pageQuery = graphql`
       excerpt(pruneLength: 160)
       html
       timeToRead
+      tableOfContents
       frontmatter {
         title
         date(formatString: "YYYY-MM-DD")

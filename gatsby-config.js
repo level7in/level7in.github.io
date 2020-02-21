@@ -6,7 +6,7 @@ module.exports = {
     siteUrl: `http://www.level7in.com`,
     social: {
       twitter: `long_qin`,
-      github: `level7in`
+      github: `level7in`,
     },
   },
   plugins: [
@@ -38,6 +38,12 @@ module.exports = {
             resolve: `gatsby-remark-responsive-iframe`,
             options: {
               wrapperStyle: `margin-bottom: 1.0725rem`,
+            },
+          },
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              offsetY: `80`,
             },
           },
           `gatsby-remark-prismjs`,
@@ -83,10 +89,10 @@ module.exports = {
           pages: `src/pages`,
           theme: `src/theme`,
           static: `src/static`,
-          img: `src/img`
-        }
-      }
-    }
+          img: `src/img`,
+        },
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

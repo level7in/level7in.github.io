@@ -148,6 +148,31 @@
   }
 }
 
+.toc {
+  font-size: 0.7rem;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: saturate(180%) blur(20px);
+  border: 1px solid var(--border-2-color);
+  position: fixed;
+  right: 0;
+  padding: .3rem;
+  top: 10vh;
+  max-height: 80vh;
+  min-width: 20vw;
+  border-radius: 0.3rem 0 0 0.3rem;
+  box-shadow: 0 0 14px 0px rgba(0, 0, 0, 0.3);
+  z-index: 5;
+  overflow-y: scroll;
+  transform: translateX(95%);
+  transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  li > ul {
+    margin-left: .5rem;
+  }
+  &:hover {
+    transform: translateX(0);
+  }
+}
+
 .prevNext {
   display: flex;
   flex-wrap: wrap;
@@ -172,7 +197,7 @@
       border-radius: 3px;
       border: 1px solid var(--theme-blue);
       transition: all 0.3s cubic-bezier(0.215, 0.61, 0.8, 1);
-      
+
       &:hover {
         color: #fff;
         background: var(--theme-blue);
