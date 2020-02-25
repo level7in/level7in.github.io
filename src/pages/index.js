@@ -26,7 +26,7 @@ class BlogIndex extends React.Component {
             const title = node.frontmatter.title || node.fields.slug
             return (
               <React.Fragment>
-                <article key={node.fields.slug} style={props}>
+                <article key={node.fields.slug} style={props} className={style.article}>
                   <header className={style.articleHeader}>
                     <small className={style.articleDate}>
                       {node.frontmatter.date}
