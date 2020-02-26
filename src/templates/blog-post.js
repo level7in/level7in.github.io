@@ -63,29 +63,25 @@ class BlogPostTemplate extends React.Component {
             <Bio />
           </article>
 
-          <nav>
-            <ul className={style.prevNext}>
-              <li>
-                {previous && (
-                  <Link to={previous.fields.slug} rel="prev">
-                    ← {previous.frontmatter.title}
-                  </Link>
-                )}
-              </li>
-              <li>
-                {next && (
-                  <Link to={next.fields.slug} rel="next">
-                    {next.frontmatter.title} →
-                  </Link>
-                )}
-              </li>
-            </ul>
+          <nav className={style.prevNext}>
+            {previous && (
+              <Link to={previous.fields.slug} rel="prev" className={style.prev}>
+                {previous.frontmatter.title}
+              </Link>
+            )}
+
+            {next && (
+              <Link to={next.fields.slug} rel="next" className={style.next}>
+                {next.frontmatter.title}
+              </Link>
+            )}
           </nav>
         </Layout>
         {/* 目录 */}
         {post.tableOfContents && (
           <div
             className={style.toc}
+            tabIndex="1"
             dangerouslySetInnerHTML={{ __html: post.tableOfContents }}
           />
         )}
