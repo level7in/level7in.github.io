@@ -166,7 +166,6 @@
 .toc {
   font-size: 0.7rem;
   background: var(--bg-3);
-  // border: 1px solid var(--border-2-color);
   position: fixed;
   right: 0;
   padding: 0.3rem;
@@ -177,8 +176,10 @@
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
   z-index: 5;
   overflow-y: scroll;
-  transform: translateX(95%);
   transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 10px 20px;
+  transform: translate3d(95%, 0px, 0px);
+  border: 1px solid var(--border-3-color);
   li > ul {
     margin-left: 0.5rem;
   }
@@ -195,8 +196,8 @@
   min-height: 4rem;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
+  border-top: 1px solid var(--border-2-color);
+  border-bottom: 1px solid var(--border-2-color);
   a {
     padding: 1rem;
     flex: 1;
@@ -207,6 +208,7 @@
   }
   .prev {
     position: relative;
+    text-align: left;
     &::after {
       content: "←";
       position: absolute;
@@ -221,6 +223,7 @@
   }
   .next {
     position: relative;
+    text-align: right;
     &::after {
       content: "→";
       position: absolute;

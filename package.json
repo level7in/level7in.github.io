@@ -47,7 +47,9 @@
   },
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
   "keywords": [
-    "gatsby", "level7in", "blog"
+    "gatsby",
+    "level7in",
+    "blog"
   ],
   "license": "MIT",
   "main": "n/a",

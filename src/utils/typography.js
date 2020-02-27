@@ -12,7 +12,7 @@ funstonTheme.overrideThemeStyles = () => {
       boxShadow: `none`,
     },
     "a:hover": {
-      color: `#3c67b5`,
+      color: `var(--theme-blue)`,
     },
     blockquote: {
       "border-left": ` 0.2625rem solid var(--color)`,
