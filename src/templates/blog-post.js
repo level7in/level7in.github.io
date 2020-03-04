@@ -81,7 +81,7 @@ class BlogPostTemplate extends React.Component {
         {post.tableOfContents && (
           <div
             className={style.toc}
-            tabIndex="1"
+            // tabIndex="1"
             dangerouslySetInnerHTML={{ __html: post.tableOfContents }}
           />
         )}
