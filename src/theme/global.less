@@ -1,20 +1,6 @@
 html,
 body {
   scroll-behavior: smooth;
-  // ::-webkit-scrollbar {
-  //   width: 10px;
-  // }
-  // ::-webkit-scrollbar-track {
-  //   background: rgba(143, 143, 143, 0.3); 
-  // }
-   
-  // ::-webkit-scrollbar-thumb {
-  //   background: rgba(161, 161, 161, 0.6); 
-   
-  // }
-  // ::-webkit-scrollbar-thumb:hover {
-  //   background: #555; 
-  // }
 }
 body {
   background-color: var(--bg);
@@ -26,6 +12,9 @@ body {
   p,
   div {
     color: var(--color);
+  }
+  ::selection {
+    background-color: rgb(255, 229, 100);
   }
   --font: "Cabin Condensed", "georgia", sans-serif;
 }
