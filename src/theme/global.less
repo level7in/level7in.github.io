@@ -21,6 +21,7 @@ body {
 
 body.light {
   --theme-blue: rgb(0, 85, 241);
+  --theme-blue-soft: rgba(180, 214, 255, 0.7);
   --theme-yellow: rgb(255, 229, 100);
   --bg: #ffffff;
   --bg-2: rgb(249, 250, 251);
@@ -30,11 +31,13 @@ body.light {
   --border-2-color: rgba(0, 0, 0, 0.1);
   --border-3-color: rgb(198, 208, 235);
   --date-color: #000;
+  --title-color: rgb(0, 85, 241);
   --inlineCode-bg: rgb(255, 229, 100);
 }
 
 body.dark {
   --theme-blue: desaturate(rgb(0, 85, 241), 50%); // 降低饱和度
+  --theme-blue-soft: rgba(54, 140, 247, 0.7);
   --theme-yellow: darken(rgb(255, 229, 100), 40%); // 降低颜色亮度
   --bg: #282c35; // 212C4E
   --bg-2: rgb(53, 61, 77);
@@ -44,6 +47,7 @@ body.dark {
   --border-2-color: rgba(255, 255, 255, 0.1);
   --border-3-color: rgba(255, 255, 255, 0.2);
   --date-color: #282c35;
+  --title-color: #85F7FF;
   --inlineCode-bg: rgba(115, 124, 153, 0.2);
 }
 

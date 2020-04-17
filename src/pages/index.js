@@ -22,35 +22,40 @@ class BlogIndex extends React.Component {
           from={{ transform: "translate3d(0,-10px,0)" }}
           to={{ transform: "translate3d(0,0,0)" }}
         >
-          {({ node, next }) => props => {
+          {({ node, next }) => (props) => {
             const title = node.frontmatter.title || node.fields.slug
             return (
-              <React.Fragment>
-                <article key={node.fields.slug} style={props} className={style.article}>
-                  <header className={style.articleHeader}>
-                    <small className={style.articleDate}>
-                      {node.frontmatter.date}
-                    </small>
-                    <span className={style.articleTitle}>
-                      <Link className={style.articleLink} to={node.fields.slug}>
-                        {title}
-                      </Link>
-                    </span>
-                  </header>
-                  <section className={style.articleSubtitle}>
-                    <div
-                      className={style.articleExcerpt}
-                      dangerouslySetInnerHTML={{
-                        __html: node.frontmatter.description || node.excerpt,
-                      }}
-                    />
-                  </section>
+              <>
+                <article
+                  key={node.fields.slug}
+                  style={props}
+                  className={style.article}
+                >
+                  <Link
+                    className={style.jumpArticle}
+                    to={node.fields.slug}
+                  >
+                    <header className={style.articleHeader}>
+                      <small className={style.articleDate}>
+                        {node.frontmatter.date}
+                      </small>
+                      <span className={style.articleTitle}>{title}</span>
+                    </header>
+                    <section className={style.articleSubtitle}>
+                      <div
+                        className={style.articleExcerpt}
+                        dangerouslySetInnerHTML={{
+                          __html: node.frontmatter.description || node.excerpt,
+                        }}
+                      />
+                    </section>
+                  </Link>
                   <div className={style.articleFoot}>
                     <div className={style.minToRead}>
                       {node.timeToRead} min read
                     </div>
                     <div className={style.tags}>
-                      {node.frontmatter.tags.map(tag => {
+                      {node.frontmatter.tags.map((tag) => {
                         return (
                           <Link
                             to={`/tags/${kebabCase(tag)}`}
@@ -89,6 +94,7 @@ class BlogIndex extends React.Component {
                     </div>
                   </div>
                 </article>
+
                 {next &&
                   node.frontmatter.date.slice(0, 4) !==
                     next.frontmatter.date.slice(0, 4) && (
@@ -96,7 +102,7 @@ class BlogIndex extends React.Component {
                       {next.frontmatter.date.slice(0, 4)} &gt;
                     </h1>
                   )}
-              </React.Fragment>
+              </>
             )
           }}
         </Trail>
