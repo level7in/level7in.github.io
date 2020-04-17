@@ -16,11 +16,11 @@ WIP:
 
 Done:
 
-- [x] 页面过渡 -react-spring
+- [x] 页面过渡 react-spring
 - [x] 标签
 - [x] 夜间模式
 - [x] typography.js
 - [x] Markdown 语法高亮
 - [x] 前一篇，下一篇
-- [x] gitpage 迁移至 ZEIT Now
-- [x] 图片全屏预览 -images-medium-zoom
+- [x] GitHub Pages 迁移至 ZEIT Now
+- [x] 图片全屏预览 gatsby-images-medium-zoom

@@ -33,12 +33,12 @@ const Bio = () => {
   `)
 
   const { author } = data.site.siteMetadata
-  console.log('data.site.siteMetadata', data.site.siteMetadata)
   return (
     <div
       style={{
         display: `flex`,
-        marginBottom: rhythm(1),
+        marginBottom: rhythm(2),
+        alignItems: "center",
       }}
     >
       <Image
@@ -54,11 +54,18 @@ const Bio = () => {
           borderRadius: `50%`,
         }}
       />
-      <p>
-        Written by <strong>{author}</strong>
+      <div>
+        Written by <strong>{author}</strong>.
         <br />
-        这里是 level7in 的博客, you can also
-      </p>
+        Thanks for reading ! You can also find me on{" "}
+        <a
+          href="https://github.com/level7in"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </a>
+      </div>
     </div>
   )
 }
