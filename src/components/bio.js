@@ -33,6 +33,7 @@ const Bio = () => {
   `)
 
   const { author } = data.site.siteMetadata
+  console.log('data.site.siteMetadata', data.site.siteMetadata)
   return (
     <div
       style={{
@@ -56,7 +57,7 @@ const Bio = () => {
       <p>
         Written by <strong>{author}</strong>
         <br />
-        This is &lt; level7in's Blog  /&gt;
+        这里是 level7in 的博客, you can also
       </p>
     </div>
   )
