@@ -99,7 +99,7 @@ class BlogIndex extends React.Component {
                   node.frontmatter.date.slice(0, 4) !==
                     next.frontmatter.date.slice(0, 4) && (
                     <h1 className={style.years} style={props}>
-                      C.E. {next.frontmatter.date.slice(0, 4)} &gt;
+                      C.E. {next.frontmatter.date.slice(0, 4)}
                     </h1>
                   )}
               </>

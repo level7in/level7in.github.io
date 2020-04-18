@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import { Spring } from "react-spring/renderprops"
 
 import Menu from "../Menu"
-import logo from "img/final0.png"
+import logo from "img/7in.svg"
 import { rhythm } from "../../utils/typography"
 import style from "./style.module.less"
 class Layout extends React.Component {
