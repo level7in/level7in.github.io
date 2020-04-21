@@ -82,6 +82,12 @@ funstonTheme.overrideThemeStyles = () => {
       "font-family": "var(--font) !important",
       "font-size": "1rem !important",
     },
+    // 媒体查询，修改字体大小
+    "@media only screen and (max-width:500px)":{
+      html: {
+        "font-size": "16px"
+      }
+    }
   }
 }
 
