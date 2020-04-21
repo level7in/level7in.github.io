@@ -1,8 +1,6 @@
 import Typography from "typography"
-// import Wordpress2016 from "typography-theme-wordpress-2016"
 import funstonTheme from "typography-theme-funston"
 import "theme/global.less"
-
 funstonTheme.overrideThemeStyles = () => {
   return {
     img: {
@@ -43,7 +41,7 @@ funstonTheme.overrideThemeStyles = () => {
       "margin-left": "-1em",
       "padding-right": "1em",
       "padding-left": "0.75em",
-      " border-left": "0.25em solid #ffcd00",
+      "border-left": "0.25em solid #ffcd00",
     },
     /**
      * Add back the container background-color, border-radius, padding, margin
@@ -87,7 +85,6 @@ funstonTheme.overrideThemeStyles = () => {
   }
 }
 
-// delete Wordpress2016.googleFonts
 
 const typography = new Typography(funstonTheme)
 

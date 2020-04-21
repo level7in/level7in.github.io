@@ -3,7 +3,7 @@ module.exports = {
     title: `7insBlog`,
     author: `level7in`,
     description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `http://www.level7in.com`,
+    siteUrl: `https://www.level7in.com`,
     social: {
       twitter: `long_qin`,
       github: `level7in`,
@@ -31,9 +31,10 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 650,
+              maxWidth: 1000,
               linkImagesToOriginal: false,
               withWebp: true,
+              quality: 80,
             },
           },
           {
@@ -76,9 +77,9 @@ module.exports = {
         short_name: `7insBlog`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#663399`,
+        theme_color: `#0055f1`,
         display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`,
+        icon: `content/assets/7in.png`,
       },
     },
     `gatsby-plugin-react-helmet`,

@@ -10,11 +10,11 @@ tags: ['logo', '设计', 'Figma']
 配色的话不太好掌握，而且 `Figma` 的预览在另一个标签页不太方便，以后再尝试。
 现在比较想尝试的是 [atlassian](https://atlassian.design/guidelines/brand/logos) 的这种风格。
 
-<iframe style="border: none;" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FXiFfdCgH4smxjxQJjTUCZ9%2F7inLogo%3Fnode-id%3D3%253A32" allowfullscreen></iframe>
+<iframe style="border: none;" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FXiFfdCgH4smxjxQJjTUCZ9%2F7inLogo%3Fnode-id%3D0%253A1" allowfullscreen></iframe>
 
-`Figmaz` 导出 `SVG` 蛮方便的，分享很容易（上下方便是），还比较容易上手。`Affinity` 的话功能太多太专业了，一直用不太明白，更新它的次数比用它的次数还多 🤦‍♂️。
+`Figma` 导出 `SVG` 蛮方便的，分享很容易（上方便是），还比较容易上手。`Affinity` 的话功能太多太专业了，一直用不太明白，更新它的次数比用它的次数还多 🤦‍♂️。
 
-<iframe style="border: none;" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FXiFfdCgH4smxjxQJjTUCZ9%2F7inLogo%3Fnode-id%3D3%253A10" allowfullscreen></iframe>
+![7in logo](./7in.svg)
 
 ---
 
