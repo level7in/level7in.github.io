@@ -6,59 +6,65 @@ import Menu from "../Menu"
 import logo from "img/7in.svg"
 import { rhythm } from "../../utils/typography"
 import style from "./style.module.less"
+
+const darkQuery = window.matchMedia("(prefers-color-scheme: dark)")
+window.__setPreferredTheme = function (newTheme) {
+  localStorage.theme = newTheme
+  document.body.className = newTheme
+}
+
 class Layout extends React.Component {
   constructor(props) {
     super(props)
-
     // 夜间模式切换
-    let preferredTheme
-    try {
-      preferredTheme = localStorage.getItem("theme")
-    } catch (err) {}
-    const isGet = typeof preferredTheme === "object" ? false : true
-
-    if (typeof window === "object") {
-      window.__onThemeChange = function() {}
-      function setTheme(newTheme) {
-        window.__theme = newTheme
-        preferredTheme = newTheme
-        document.body.className = newTheme
-        window.__onThemeChange(newTheme)
+    const themeMatches = darkQuery.matches ? "dark" : "light"
+    let theme = themeMatches
+    const themeDate = new Date(localStorage.themeDate || "")
+    if (localStorage.themeDate !== undefined) {
+      let nextDay = themeDate
+      nextDay.setDate(nextDay.getDate() + 1)
+      nextDay.setHours(6)
+      nextDay.setMinutes(0)
+      nextDay.setMilliseconds(0)
+      if (nextDay.getTime() >= new Date().getTime()) {
+        theme = localStorage.theme || themeMatches
+      } else {
+        theme = themeMatches
       }
-
-      window.__setPreferredTheme = function(newTheme) {
-        setTheme(newTheme)
-        try {
-          localStorage.setItem("theme", newTheme)
-        } catch (err) {}
-      }
-
-      const darkQuery = window.matchMedia("(prefers-color-scheme: dark)")
-      darkQuery.addListener(e => {
-        window.__setPreferredTheme(e.matches ? "dark" : "light")
-        this.setState({ theme: e.matches, menuVisible: false })
-      })
-
-      setTheme(preferredTheme || (darkQuery.matches ? "dark" : "light"))
-      // theme初始值
-      this.state = {
-        theme: isGet ? preferredTheme === "dark" : darkQuery.matches,
-        menuVisible: false,
-      }
-    } else {
-      // theme初始值
-      this.state = {
-        theme: isGet ? preferredTheme === "dark" : false,
-        menuVisible: false,
-      }
+    }
+    window.__setPreferredTheme(theme)
+    // theme初始值
+    this.state = {
+      theme,
+      menuVisible: false,
     }
   }
+
+  componentDidMount() {
+    darkQuery.addListener(this.changeTheme.bind(this))
+  }
+
+  componentWillUnmount() {
+    darkQuery.removeListener(this.changeTheme.bind(this))
+  }
+
+  changeTheme(e) {
+    window.__setPreferredTheme(e.matches ? "dark" : "light")
+    this.setState({ theme: e.matches ? "dark" : "light" })
+  }
+
   switchTheme() {
     const { theme } = this.state
-    if (typeof window !== `undefined`) {
-      window.__setPreferredTheme(!theme ? "dark" : "light")
+    const themeTarget = theme === "dark" ? "light" : "dark"
+    const themeMatches = darkQuery.matches ? "dark" : "light"
+    window.__setPreferredTheme(themeTarget)
+    this.setState({ theme: themeTarget })
+    // 匹配
+    if (themeTarget === themeMatches) {
+      localStorage.removeItem("themeDate")
+    } else {
+      localStorage.themeDate = new Date()
     }
-    this.setState({ theme: !theme })
   }
 
   render() {
@@ -88,11 +94,9 @@ class Layout extends React.Component {
             to={{ opacity: 1, transform: "rotate(360deg)" }}
             config={{ duration: 700 }}
           >
-            {props => (
+            {(props) => (
               <div
-                className={`${style.switchTheme} ${
-                  theme ? style.dark : style.light
-                }`}
+                className={`${style.switchTheme} ${style[theme]}`}
                 style={props}
                 onClick={this.switchTheme.bind(this)}
                 onKeyDown={this.switchTheme.bind(this)}
@@ -126,7 +130,7 @@ class Layout extends React.Component {
               to={{ opacity: 1, x2: 21, x1: 3 }}
               config={{ duration: 300 }}
             >
-              {props => (
+              {(props) => (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="1.4rem"
@@ -156,7 +160,7 @@ class Layout extends React.Component {
           from={{ opacity: 0, transform: "translateY(-0.5rem)" }}
           to={{ opacity: 1, transform: "translateY(0)" }}
         >
-          {props => (
+          {(props) => (
             <main
               style={{
                 marginLeft: `auto`,
