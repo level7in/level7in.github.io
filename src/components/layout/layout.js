@@ -7,10 +7,14 @@ import logo from "img/7in.svg"
 import { rhythm } from "../../utils/typography"
 import style from "./style.module.less"
 
-const darkQuery = window.matchMedia("(prefers-color-scheme: dark)")
-window.__setPreferredTheme = function (newTheme) {
-  localStorage.theme = newTheme
-  document.body.className = newTheme
+const useWindow = typeof window !== `undefined` // https://gatsby.dev/debug-html
+
+const darkQuery = useWindow && window.matchMedia("(prefers-color-scheme: dark)")
+if (useWindow) {
+  window.__setPreferredTheme = function (newTheme) {
+    localStorage.theme = newTheme
+    document.body.className = newTheme
+  }
 }
 
 class Layout extends React.Component {
@@ -19,20 +23,22 @@ class Layout extends React.Component {
     // 夜间模式切换
     const themeMatches = darkQuery.matches ? "dark" : "light"
     let theme = themeMatches
-    const themeDate = new Date(localStorage.themeDate || "")
-    if (localStorage.themeDate !== undefined) {
-      let nextDay = themeDate
-      nextDay.setDate(nextDay.getDate() + 1)
-      nextDay.setHours(6)
-      nextDay.setMinutes(0)
-      nextDay.setMilliseconds(0)
-      if (nextDay.getTime() >= new Date().getTime()) {
-        theme = localStorage.theme || themeMatches
-      } else {
-        theme = themeMatches
+    if (useWindow) {
+      const themeDate = new Date(localStorage.themeDate || "")
+      if (localStorage.themeDate !== undefined) {
+        let nextDay = themeDate
+        nextDay.setDate(nextDay.getDate() + 1)
+        nextDay.setHours(6)
+        nextDay.setMinutes(0)
+        nextDay.setMilliseconds(0)
+        if (nextDay.getTime() >= new Date().getTime()) {
+          theme = localStorage.theme || themeMatches
+        } else {
+          theme = themeMatches
+        }
       }
+      window.__setPreferredTheme(theme)
     }
-    window.__setPreferredTheme(theme)
     // theme初始值
     this.state = {
       theme,
@@ -49,7 +55,7 @@ class Layout extends React.Component {
   }
 
   changeTheme(e) {
-    window.__setPreferredTheme(e.matches ? "dark" : "light")
+    useWindow && window.__setPreferredTheme(e.matches ? "dark" : "light")
     this.setState({ theme: e.matches ? "dark" : "light" })
   }
 
@@ -57,13 +63,15 @@ class Layout extends React.Component {
     const { theme } = this.state
     const themeTarget = theme === "dark" ? "light" : "dark"
     const themeMatches = darkQuery.matches ? "dark" : "light"
-    window.__setPreferredTheme(themeTarget)
+    useWindow && window.__setPreferredTheme(themeTarget)
     this.setState({ theme: themeTarget })
     // 匹配
-    if (themeTarget === themeMatches) {
-      localStorage.removeItem("themeDate")
-    } else {
-      localStorage.themeDate = new Date()
+    if (useWindow) {
+      if (themeTarget === themeMatches) {
+        localStorage.removeItem("themeDate")
+      } else {
+        localStorage.themeDate = new Date()
+      }
     }
   }
 
@@ -101,6 +109,7 @@ class Layout extends React.Component {
                 onClick={this.switchTheme.bind(this)}
                 onKeyDown={this.switchTheme.bind(this)}
                 role="button"
+                aria-label="switch theme"
                 tabIndex="0"
               />
             )}

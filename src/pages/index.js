@@ -1,7 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import kebabCase from "lodash/kebabCase"
-import { Trail } from "react-spring/renderprops"
 
 import Bio from "components/bio"
 import Layout from "components/layout/layout"
