@@ -105,7 +105,7 @@ class Layout extends React.Component {
             {(props) => (
               <div
                 className={`${style.switchTheme} ${style[theme]}`}
-                style={props}
+                style={{...props, 'backgroundSize': '100%'}}
                 onClick={this.switchTheme.bind(this)}
                 onKeyDown={this.switchTheme.bind(this)}
                 role="button"
@@ -125,6 +125,12 @@ class Layout extends React.Component {
             <Link className={style.link} to={`/about`}>
               关于
             </Link>
+          </div>
+          {/* 状态页 */}
+          <div className={style.jumpLink}>
+            <a className={style.link} style={{cursor: 'alias'}} href="https://uptime.level7in.com" rel="noreferrer" target="_blank">
+              状态
+            </a>
           </div>
           {/* menu */}
           <div

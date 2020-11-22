@@ -26,6 +26,9 @@ export default class Menu extends React.Component {
               <Link className={style.link} to={`/about`}>
                 关于
               </Link>
+              <a className={style.link} href="https://uptime.level7in.com" rel="noreferrer" target="_blank">
+                状态
+              </a>
             </div>
           )}
         </Spring>
