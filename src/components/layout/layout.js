@@ -1,10 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
-import { Spring } from "react-spring/renderprops"
-
 import Menu from "../Menu"
 import logo from "img/7in.svg"
-import { rhythm } from "../../utils/typography"
 import style from "./style.module.less"
 
 const useWindow = typeof window !== `undefined` // https://gatsby.dev/debug-html
@@ -79,13 +76,7 @@ class Layout extends React.Component {
     const { title, children } = this.props
     const { theme, menuVisible } = this.state
     const header = (
-      <div
-        style={{
-          maxWidth: rhythm(24),
-          padding: `10px ${rhythm(3 / 4)}`,
-        }}
-        className={style.headerContent}
-      >
+      <div className={style.headerContent}>
         {/* logo */}
         <img className={style.logo} src={logo} alt="logo" />
         {/* 站名 */}
@@ -97,23 +88,15 @@ class Layout extends React.Component {
         {/* 导航 */}
         <div className={style.nav}>
           {/* dark mode */}
-          <Spring
-            from={{ opacity: 0, transform: "rotate(0deg)" }}
-            to={{ opacity: 1, transform: "rotate(360deg)" }}
-            config={{ duration: 700 }}
-          >
-            {(props) => (
-              <div
-                className={`${style.switchTheme} ${style[theme]}`}
-                style={{...props, 'backgroundSize': '100%'}}
-                onClick={this.switchTheme.bind(this)}
-                onKeyDown={this.switchTheme.bind(this)}
-                role="button"
-                aria-label="switch theme"
-                tabIndex="0"
-              />
-            )}
-          </Spring>
+          <div
+            className={`${style.switchTheme} ${style[theme]}`}
+            style={{ backgroundSize: "100%" }}
+            onClick={this.switchTheme.bind(this)}
+            onKeyDown={this.switchTheme.bind(this)}
+            role="button"
+            aria-label="switch theme"
+            tabIndex="0"
+          />
           {/* 标签页 */}
           <div className={style.jumpLink}>
             <Link className={style.link} to={`/tags`}>
@@ -128,7 +111,13 @@ class Layout extends React.Component {
           </div>
           {/* 状态页 */}
           <div className={style.jumpLink}>
-            <a className={style.link} style={{cursor: 'alias'}} href="https://uptime.level7in.com" rel="noreferrer" target="_blank">
+            <a
+              className={style.link}
+              style={{ cursor: "alias" }}
+              href="https://uptime.level7in.com"
+              rel="noreferrer"
+              target="_blank"
+            >
               状态
             </a>
           </div>
@@ -140,29 +129,21 @@ class Layout extends React.Component {
             role="button"
             tabIndex="0"
           >
-            <Spring
-              from={{ opacity: 0, x2: 0, x1: 12 }}
-              to={{ opacity: 1, x2: 21, x1: 3 }}
-              config={{ duration: 300 }}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="1.4rem"
+              height="1.4rem"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
-              {(props) => (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="1.4rem"
-                  height="1.4rem"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <line y1="12" {...props} y2="12"></line>
-                  <line y1="6" {...props} y2="6"></line>
-                  <line y1="18" {...props} y2="18"></line>
-                </svg>
-              )}
-            </Spring>
+              <line y1="12" y2="12"></line>
+              <line y1="6" y2="6"></line>
+              <line y1="18" y2="18"></line>
+            </svg>
           </div>
         </div>
       </div>
@@ -171,32 +152,8 @@ class Layout extends React.Component {
     return (
       <div>
         <header className={style.header}>{header}</header>
-        <Spring
-          from={{ opacity: 0, transform: "translateY(-0.5rem)" }}
-          to={{ opacity: 1, transform: "translateY(0)" }}
-        >
-          {(props) => (
-            <main
-              style={{
-                marginLeft: `auto`,
-                marginRight: `auto`,
-                maxWidth: rhythm(24),
-                padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-                minHeight: `calc(100vh - 10.3rem)`,
-                ...props,
-              }}
-            >
-              {children}
-            </main>
-          )}
-        </Spring>
-        <footer
-          style={{
-            maxWidth: rhythm(24),
-            padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-          }}
-          className={style.footer}
-        >
+        <main className={style.main}>{children}</main>
+        <footer className={style.footer}>
           <div className={style.description}>
             level7in © {new Date().getFullYear()}, In ShenZhen, Built with
             &nbsp;

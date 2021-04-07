@@ -1,6 +1,5 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Trail } from "react-spring/renderprops"
 // Utilities
 import kebabCase from "lodash/kebabCase"
 
@@ -13,7 +12,7 @@ import SEO from "components/seo"
 import style from "theme/normal.module.less"
 const TagsPage = ({
   data: {
-    allMarkdownRemark: { group },
+    allMdx: { group },
     site: {
       siteMetadata: { title },
     },
@@ -42,24 +41,16 @@ const TagsPage = ({
           &nbsp; 所有标签（{group.length}）
         </h3>
         <div className={style.tagsField}>
-          <Trail
-            items={group}
-            keys={tag => tag.fieldValue}
-            from={{ transform: "translate3d(-10px,0,0)" }}
-            to={{ transform: "translate3d(0,0,0)" }}
-          >
-            {tag => props => (
-              <Link
-                key={tag.fieldValue}
-                to={`/tags/${kebabCase(tag.fieldValue)}/`}
-                style={props}
-              >
-                <div className={style.tags}>
-                  {tag.fieldValue} ({tag.totalCount})
-                </div>
-              </Link>
-            )}
-          </Trail>
+          {group.map((tag) => (
+            <Link
+              key={tag.fieldValue}
+              to={`/tags/${kebabCase(tag.fieldValue)}/`}
+            >
+              <div className={style.tags}>
+                {tag.fieldValue} ({tag.totalCount})
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
     </div>
@@ -68,7 +59,7 @@ const TagsPage = ({
 
 TagsPage.propTypes = {
   data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
+    allMdx: PropTypes.shape({
       group: PropTypes.arrayOf(
         PropTypes.shape({
           fieldValue: PropTypes.string.isRequired,
@@ -93,7 +84,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(limit: 2000) {
+    allMdx(limit: 1000) {
       group(field: frontmatter___tags) {
         fieldValue
         totalCount
